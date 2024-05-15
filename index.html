@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaritáFarma</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="img/logo alta 2.png" alt="RaritáFarma Logo">
+            </div>
+            <p class="slogan">Celebrando a raridade e a singularidade <br> que existe em você.</p>
+        </header>
+        <div id="progressBarContainer">
+            <div id="progressBar"></div>
+        </div>
+        <section id="startSection">
+            <button class="btn" onclick="goToWelcome()">Iniciar</button>
+        </section>
+        <section id="welcomeSection" class="hidden">
+            <label for="username">Digite seu nome:</label>
+            <input type="text" id="username" placeholder="Seu nome">
+            <button class="btn" onclick="goToWhatsApp()">Iniciar</button>
+        </section>
+        <section id="whatsAppSection" class="hidden">
+            <label for="whatsapp">Digite seu número de WhatsApp:</label>
+            <input type="text" id="whatsapp" placeholder="Seu número de WhatsApp">
+            <button class="btn back-button" onclick="goBackToWelcome()"><i class="fas fa-arrow-left"></i></button>
+            <button class="btn" onclick="goToGreeting()">Próximo</button>
+        </section>
+        <section id="greetingSection" class="hidden">
+            <h2 id="greetingMessage"></h2>
+            <p>Vamos dar início a sua jornada conosco.</p>
+            <button class="btn back-button" onclick="goBackToWhatsApp()"><i class="fas fa-arrow-left"></i></button>
+            <button class="btn" onclick="startQuestionnaire()">Iniciar Jornada</button>
+        </section>
+        <form id="questionnaire" class="hidden" onsubmit="event.preventDefault();">
+            <div id="questionContainer"></div>
+            <button class="btn back-button" type="button" onclick="previousQuestion()"><i class="fas fa-arrow-left"></i></button>
+        </form>
+        <section id="confirmationSection" class="hidden">
+            <h2>Confirme suas respostas</h2>
+            <h3>Por favor, confirme suas respostas:</h3>
+            <div id="answersReview"></div>
+            <button class="btn back-button" onclick="goBackToQuestionnaire()"><i class="fas fa-arrow-left"></i></button>
+            <button class="btn" onclick="submitFinal()">Confirmar e Enviar</button>
+        </section>
+        <section id="finalStep" class="hidden">
+            <div id="productResult"></div>
+            <input type="email" id="email" placeholder="Seu email" required>
+            <button class="btn back-button" onclick="goBackToConfirmation()"><i class="fas fa-arrow-left"></i></button>
+            <button class="btn" onclick="generatePDF()">Gerar PDF</button>
+            <button class="btn" onclick="sendToWhatsApp()">Enviar pelo WhatsApp</button>
+            <button class="btn" onclick="sendEmail()">Enviar por Email</button>
+            <button class="btn" onclick="printDocument()">Imprimir</button>
+        </section>
+        <section id="thankYouSection" class="hidden">
+            <h2>Obrigado!</h2>
+            <p>"Cada indivíduo é único. Assim como as estrelas no céu, <br> cada um brilha de maneira singular."</p>
+            <p>Descubra mais sobre nós escaneando o QR code abaixo:</p>
+            <div class="qrcode">
+                <img src="img/qrcoderarita.png" alt="QR Code">
+            </div>
+            <button class="btn" onclick="resetSystem()">Voltar ao Início</button>
+        </section>
+    </div>
+    <!-- Efeitos Sonoros -->
+    <audio id="clickSound" src="sounds/click.mp3"></audio>
+    <audio id="transitionSound" src="sounds/transition.mp3"></audio>
+    <audio id="welcomeSound" src="sounds/boasvindasnome.mp3"></audio>
+    <audio id="whatsAppInstructionSound" src="sounds/whatsapp.mp3"></audio>
+    <audio id="greetingSound" src="sounds/iniciojornada.mp3"></audio>
+    <!-- Música de fundo -->
+    <audio id="backgroundMusic" src="sounds/AUDIOBG.MP3" loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>
